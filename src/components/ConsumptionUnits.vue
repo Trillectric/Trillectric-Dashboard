@@ -8,24 +8,33 @@
 </div>  
       <div class="right-cards">
         <div class="top-cards">
-          <div class="card top-card peak_power">
-            <p>Peak Power</p>
-            <p>773.79 KWh </p>
+          <div class="card top-card">
+            <div class="image_content">
+              <div class="image_card">
+    <img src="../assets/ship.svg" alt="">
 
-<div class="time_date">
-    <img src="../assets/clock.svg" alt="">
-    <p>5/13/2024</p>
+  </div>
+  <p class="main-text">Carbon Emission</p>
+            </div>
+<div>
+  <p class="emission_tons">
+  267.29t
+</p></div>
 </div>
-          </div>
-<div class="card top-card bar">
-  <div class="top-card-content power">
-    <p>Outage</p>
-    <p>Power</p>
-    <p>Power Cut</p>
+
+
+<div class="card top-card">
+            <div class="image_content">
+              <div class="image_card ship_green">
+    <img src="../assets/ship.svg" alt="">
+
   </div>
-  <div class="progress-bar-container">
-    <DonutPie/>
-  </div>
+  <p class="main-text">Carbon Emission</p>
+            </div>
+<div>
+  <p class="emission_tons">
+  267.29t
+</p></div>
 </div>
 
         </div>
@@ -112,93 +121,145 @@
   <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-  .dash_card_layout {
-    display: flex;
-    gap: 20px;
-    align-items: stretch; 
-    padding: 20px;
-    background: #fff;
-  }
-  
-  .left-card {
-    background: linear-gradient(to bottom, #120B41, #453A94);
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 22px 80px 0px 30px;
+.dash_card_layout {
   display: flex;
-  align-items: flex-start; 
-  justify-content: flex-start; 
-
-  
-  .content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; 
-  }
-
-  .top-text {
-    font-size: 23px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #fff;
-    font-family: "Montserrat", serif;
-    margin:20px 0px 10px 0px;
-
-  }
-
-  .bottom-text {
-    font-size: 40px;
-    font-weight: 600;
-    color: #fff;
-    font-family: "Montserrat", serif;
-    margin: 0;
-
-  }
-  span{
-    font-size: 19px;
-    font-weight: 500;
-    color: #fff;
-    font-family: "Montserrat", serif;
-  }
+  gap: 20px;
+  align-items: stretch;
+  padding: 20px;
+  background: #fff;
 }
 
-  
-  .right-cards {
-    flex: 2; 
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .top-cards {
-    display: flex;
-    gap: 15px;
-    flex: 1; 
-  }
-  
-  .top-card {
-    flex: 1; 
-    background-color: #F5F4FF;
-    padding: 20px;
-    border-radius: 8px;
-    padding-bottom: 0;
-  }
-  .top-card p{
-    margin: 0;
-  }
-  .peak_power{
-    display: flex;
-    flex-direction: column;
-  }
-.bar{
-    display: flex;
-    justify-content: space-between;
+.left-card {
+  position: relative;
+  width: 391px;
+  height: 357px;
+  background: linear-gradient(to bottom, rgba(18, 11, 65, 0.8), rgba(69, 58, 148, 0.8)),
+    url('../assets/card_bg.svg') no-repeat center center;
+  background-size: cover;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 25px 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
 }
-  .peak_power p:nth-of-type(1) {
-  font-size: 18px ;
+
+.left-card .content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.left-card .top-text {
+  font-size: 23px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: "Montserrat", serif;
+  margin: 20px 0 10px 0;
+}
+
+.left-card .bottom-text {
+  font-size: 40px;
+  font-weight: 600;
+  color: #fff;
+  font-family: "Montserrat", serif;
+  margin-top: 70%;
+}
+
+.left-card span {
+  font-size: 19px;
+  font-weight: 500;
+  color: #fff;
+  font-family: "Montserrat", serif;
+}
+
+.right-cards {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.top-cards {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+}
+
+.top-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap:15px;
+  background-color: #453A94;
+  padding: 20px;
+  border-radius: 20px;
+  padding-bottom: 0;
+ 
+}
+.top-card:nth-child(2) {
+  background-color: #07CA96;
+}
+
+.top-card p {
+  margin: 0;
+}
+
+.peak_power {
+  display: flex;
+  gap: 15px; 
+}
+.image_card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #8d7efd;
+  border-radius: 50%;
+  padding: 10px;
+
+}
+.image_card.ship_green{
+  background-color: #00F2B2;
+}
+.text-content {
+  display: flex;
+  flex-direction: column;
+}
+.main-text {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
+  color: #fff;
+  font-family: "Montserrat", serif;
+
+}
+.emission_tons {
+  font-size: 25px;
+  font-weight: 700;
+  text-align: left;
+  color: #fff;
+  font-family: "Montserrat", serif;
+
+}
+.bottom-text {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  color: #777; 
+  margin-top: 5px; 
+}
+.bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.peak_power p:nth-of-type(1) {
+  font-size: 18px;
   font-weight: 700;
   font-family: "Montserrat", serif;
-  color: #000000;
+  color: #fff;
   margin-bottom: 2%;
 }
 
@@ -207,8 +268,8 @@
   font-weight: 600;
   font-family: "Montserrat", serif;
   color: #000000;
-
 }
+
 .power p:nth-of-type(1) {
   font-size: 18px;
   font-weight: 700;
@@ -223,6 +284,17 @@
   font-family: "Montserrat", serif;
   color: #000000;
 }
+
+.power p:nth-of-type(2)::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #453a94;
+  display: inline-block;
+  margin-right: 10px;
+}
+
 .power p:nth-of-type(3) {
   font-size: 13px;
   font-weight: 400;
@@ -230,48 +302,44 @@
   color: #000000;
 }
 
-.power p:nth-of-type(2)::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #453A94; 
-  display: inline-block;
-  margin-right: 10px; 
-}
-
 .power p:nth-of-type(3)::before {
   content: '';
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #00F2B2; 
+  background-color: #00f2b2;
   display: inline-block;
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
+.image_content{
+  display: flex;
+  align-items: center;
+  gap:15px
+  
+}
+.time_date {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2%;
+}
 
-  .time_date{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 2%;
+.time_date p {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  margin-bottom: 0 !important;
+}
 
-  }
-  .time_date p{
-    font-size: 12px !important;
-    font-weight: 400 !important;
-    margin-bottom: 0% !important;
-
-  }
-  .top-card .top-card-content {
+.top-card .top-card-content {
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: flex-start;
-} 
+}
+
 .bottom-card {
-  background-color: #F5F4FF;
+  background-color: #f5f4ff;
   padding: 20px;
   border-radius: 8px;
   display: flex;
@@ -291,16 +359,15 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  position: relative;  
+  position: relative;
 }
 
 .performance-text {
   font-size: 18px;
   font-weight: 700;
-  color:#000000;
+  color: #000000;
   margin: 0;
   font-family: "Montserrat", serif;
-
 }
 
 .additional-text {
@@ -311,28 +378,27 @@
 
 .right-side {
   flex: 1;
-
 }
 
 .dropdown {
-  position: relative;  
+  position: relative;
 }
 
 .dropdown-icon {
   cursor: pointer;
   font-size: 18px;
   font-weight: bold;
-  margin-left: 10px;  
+  margin-left: 10px;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 2px;  
+  top: 2px;
   left: 10px;
   border-radius: 5px;
   width: 100%;
   z-index: 10;
-  display: block;  
+  display: block;
 }
 
 .dropdown-menu ul {
@@ -346,10 +412,12 @@
   cursor: pointer;
   font-size: 12px;
 }
+
 .dropdown-menu li:hover {
-    color: #453A94;
-    font-size: 13px;
+  color: #453a94;
+  font-size: 13px;
 }
+
 </style>
 
 

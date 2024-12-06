@@ -79,7 +79,6 @@ export default {
   transition: width 0.3s ease;
   position: fixed;
   z-index: 1000;
-    background: linear-gradient(to bottom, #120B41, #453A94);
 
 }
 .custom-hr {
@@ -116,11 +115,7 @@ export default {
   align-items: center;
 }
 .sidebar-link {
-  display: flex;
-  gap: 8px;
-  align-items: center;
   width: 100%;
-  margin-bottom: 15px;
   overflow: hidden; 
   transition: all 0.3s ease; 
 }
@@ -133,15 +128,17 @@ export default {
   padding: 10px 10px 10px 25px ;
 }
 .sidebar-link:nth-child(6) {
-  margin-top: 50px;
+  margin-top: 70%;
 }
-.sidebar-link:nth-child(7) {
-position: absolute;
-bottom: 18%;
-}
-.sidebar-link:nth-child(8) {
-position: absolute;
-bottom: 10%;
+
+.sidebar-link:nth-child(6)::after,
+.sidebar-link:nth-child(7)::after {
+  content: '';
+  display: block; 
+  height: 0.5px;
+  width: 75%;
+  background-color: #fff;
+  margin: 10px auto; 
 }
 .logo img{
   width: 100%;
@@ -173,9 +170,10 @@ bottom: 10%;
 }
 
 .sidebar-links .sidebar-link a:hover {
-  position: relative; 
+  position: relative;
   border-left: 4px solid #fff;
 }
+
 .sidebar-links .sidebar-link a:hover::after {
   content: '';
   position: absolute;

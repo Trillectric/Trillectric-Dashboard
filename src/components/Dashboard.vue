@@ -1,26 +1,16 @@
 <template>
   <div :class="['dashboard', { 'dashboard-expanded': sidebarOpen }]">
-    <template v-if="!selectedRow">
-<Profile/>
       <DashButton />
-      <SystemOverview />
       <ConsumptionUnits />
       <SolarPsystem />
-      <SearchDropdown />
-      <Table @row-click="handleRowClick" />
-    </template>
   </div>
 </template>
 
   
   <script>
-  import Profile from '../components/Profile/Profile.vue'
   import DashButton from '../components/Dashbutton.vue';
-  import SystemOverview from '../components/SystemOverview.vue'
   import ConsumptionUnits from './ConsumptionUnits.vue';
   import SolarPsystem from './SolarPsystem.vue';
-  import SearchDropdown from './SearchDropdown.vue';
-  import Table from './Table.vue'
   
   export default {
     name: 'Dashboard',
@@ -42,14 +32,9 @@
       },
     },
     components: {
-      Profile,
       DashButton,
-      SystemOverview,
       ConsumptionUnits,
       SolarPsystem,
-      SearchDropdown,
-      Table,
-      // DynamicComponent
     },
   };
   </script>
@@ -58,6 +43,7 @@
   .dashboard {
     transition: margin-left 0.3s ease;
     margin-left: 100px; 
+    width:65%;
   }
   
   .dashboard-expanded {

@@ -133,7 +133,7 @@
   position: relative;
   width: 391px;
   height: 357px;
-  background: linear-gradient(to bottom, rgba(18, 11, 65, 0.8), rgba(69, 58, 148, 0.8)),
+  background: linear-gradient(to right, #332983, #1B125F),
     url('../assets/card_bg.svg') no-repeat center center;
   background-size: cover;
   border: 1px solid #ccc;
@@ -193,14 +193,15 @@
   flex-direction: column;
   flex: 1;
   gap:15px;
-  background-color: #453A94;
+  background:linear-gradient(to right, #FEC22B, #E59E0E);
   padding: 20px;
   border-radius: 20px;
   padding-bottom: 0;
  
 }
+
 .top-card:nth-child(2) {
-  background-color: #07CA96;
+  background:linear-gradient(100deg,#5E0A9F, #07CA96);
 }
 
 .top-card p {

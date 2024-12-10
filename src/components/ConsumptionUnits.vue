@@ -1,120 +1,90 @@
 <template>
-    <div class="dash_card_layout">
-        <div class="left-card">
-  <div class="content">
-    <p class="top-text">Consumption <br>  Units</p>
-    <p class="bottom-text">740.41 <span>KWh</span> </p>
-  </div>
-</div>  
-      <div class="right-cards">
-        <div class="top-cards">
-          <div class="card top-card">
-            <div class="image_content">
-              <div class="image_card">
-    <img src="../assets/ship.svg" alt="">
-
-  </div>
-  <p class="main-text">Carbon Emission</p>
+  <div class="dash_card_layout">
+    <div class="left-card">
+      <div class="content">
+        <p class="top-text">Consumption Units</p>
+        <p class="bottom-text">740.41 <span>KWh</span></p>
+      </div>
+    </div>
+    <div class="right-cards">
+      <div class="top-cards">
+        <div class="card top-card">
+          <div class="image_content">
+            <div class="image_card">
+              <img src="../assets/ship.svg" alt="">
             </div>
-<div>
-  <p class="emission_tons">
-  267.29t
-</p></div>
-</div>
-
-
-<div class="card top-card">
-            <div class="image_content">
-              <div class="image_card ship_green">
-    <img src="../assets/ship.svg" alt="">
-
-  </div>
-  <p class="main-text">Carbon Emission</p>
+            <p class="main-text">Carbon <br> Emission</p>
+          </div>
+          <div>
+            <p class="emission_tons">267.29t</p>
+            <p class="month">This Month</p>
+            <div class='curved_image'>
+              <img src='../assets/curve1.svg' alt="curved">
             </div>
-<div>
-  <p class="emission_tons">
-  267.29t
-</p></div>
-</div>
-
+          </div>
         </div>
-        <div class="card bottom-card">
-    <div class="left-side">
-      <div class="performance">
-        <p class="performance-text">{{ performanceLabel }}</p>
-        <div class="dropdown">
-          <span class="dropdown-icon" @click="toggleDropdown">▼</span>
-          <div v-if="isDropdownVisible" class="dropdown-menu">
-            <ul>
-              <li @click="updatePerformanceLabel('yesterday')">Yesterday</li>
-              <li @click="updatePerformanceLabel('today')">Today</li>
-              <li @click="updatePerformanceLabel('tomorrow')">Tomorrow</li>
-            </ul>
+        <div class="card top-card">
+          <div class="image_content">
+            <div class="image_card ship_green">
+              <img src="../assets/ship.svg" alt="">
+            </div>
+            <p class="main-text">Carbon  <br>Emission</p>
+          </div>
+          <div>
+            <p class="emission_tons">267.29t</p>
+            <div class='curved_image right'>
+              <img src='../assets/curve.svg' alt="curved">
+            </div>
           </div>
         </div>
       </div>
-
-      <p class="additional-text">1.65 MWh</p>
-      <p class="additional-text">Energy Produced</p>
-    </div>
-
-    <div class="right-side">
-      <PerformanceGraph/>
-    </div>
-  </div>
-
-
+      <div class="card bottom-card">
+        <div class="left-side">
+          <div class='power-generate'>
+            <p class="generate">Today’s Power Generate</p>
+            <p class="tracking">Tracking and analyzing electricity consumption data in <br> real-time.</p>
+            <p class="units">40,74 kWh</p>
+            <div class="circle-container">
+              <div
+                v-for="(circle, index) in circles"
+                :key="index"
+                class="circle"
+              >
+                <div
+                  v-if="index === blinkingIndex"
+                  class="dot green-dot"
+                  :class="{ blinking: isBlinking }"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </template>
-  
-  <script>
-  import DonutPie from '../components/DonutPie.vue';
-  import PerformanceGraph from '../components/PerformanceGraph.vue';
-  
-  export default {
-    name: 'ConsumptionUnits',
-    components: {
-      DonutPie,
-      PerformanceGraph
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ConsumptionUnits',
+  data() {
+    return {
+      circles: Array(16).fill(null), 
+      blinkingIndex: 0, 
+      isBlinking: true, 
+    };
+  },
+  methods: {
+    updateBlinkingIndex() {
+      this.blinkingIndex = (this.blinkingIndex + 1) % this.circles.length;
     },
-    data() {
-      return {
-        selectedDate: 'today', 
-        performanceLabel: 'Performance Today', 
-        isDropdownVisible: false, 
-        series: [70, 30], 
-      };
-    },
-    methods: {
-      toggleDropdown() {
-        this.isDropdownVisible = !this.isDropdownVisible;  
-      },
-      updatePerformanceLabel(selectedOption) {
-        this.selectedDate = selectedOption;
-        if (selectedOption === 'yesterday') {
-          this.performanceLabel = 'Performance Yesterday';
-        } else if (selectedOption === 'today') {
-          this.performanceLabel = 'Performance Today';
-        } else if (selectedOption === 'tomorrow') {
-          this.performanceLabel = 'Performance Tomorrow';
-        }
-  
-        this.isDropdownVisible = false;  
-        this.updateChartData();  
-      },
-      updateChartData() {
-        if (this.selectedDate === 'yesterday') {
-          this.series = [50, 50]; 
-        } else if (this.selectedDate === 'today') {
-          this.series = [70, 30]; 
-        } else if (this.selectedDate === 'tomorrow') {
-          this.series = [40, 60]; 
-        }
-      }
-    }
-  };
-  </script>
+  },
+  mounted() {
+    setInterval(this.updateBlinkingIndex, 5000);
+  },
+};
+</script>
+
   
   
   
@@ -131,14 +101,9 @@
 
 .left-card {
   position: relative;
-  width: 391px;
-  height: 357px;
-  background: linear-gradient(to right, #332983, #1B125F),
-    url('../assets/card_bg.svg') no-repeat center center;
-  background-size: cover;
-  border: 1px solid #ccc;
+  background: linear-gradient(to right, #332983, #1B125F);
   border-radius: 25px;
-  padding: 25px 40px;
+  padding: 20px 85px 5px 30px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -148,7 +113,6 @@
 .left-card .content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .left-card .top-text {
@@ -157,21 +121,20 @@
   text-transform: uppercase;
   color: #fff;
   font-family: "Montserrat", serif;
-  margin: 20px 0 10px 0;
+  /* margin: 20px 0 10px 0; */
 }
 
 .left-card .bottom-text {
   font-size: 40px;
-  font-weight: 600;
-  color: #fff;
+  font-weight: 700;
+  color: #00FFBC;
   font-family: "Montserrat", serif;
-  margin-top: 70%;
 }
 
 .left-card span {
   font-size: 19px;
   font-weight: 500;
-  color: #fff;
+  color: #00FFBC;
   font-family: "Montserrat", serif;
 }
 
@@ -185,18 +148,29 @@
 .top-cards {
   display: flex;
   gap: 15px;
-  flex: 1;
 }
-
+.month{
+  font-size: 10px;
+  font-weight: 500;
+  margin:0;
+  color:#fff;
+}
+.curved_image{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.curved_image.right{
+  margin-top: 7%;
+}
 .top-card {
+  flex:1;
   display: flex;
   flex-direction: column;
-  flex: 1;
-  gap:15px;
+  gap: 10px;
   background:linear-gradient(to right, #FEC22B, #E59E0E);
-  padding: 20px;
+  padding: 10px 25px 10px 20px;
   border-radius: 20px;
-  padding-bottom: 0;
  
 }
 
@@ -216,13 +190,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #8d7efd;
-  border-radius: 50%;
+  background-color: #E7A218;
+  border-radius: 10px;
   padding: 10px;
 
 }
 .image_card.ship_green{
-  background-color: #00F2B2;
+  background-color: #8D7EFD;
 }
 .text-content {
   display: flex;
@@ -248,7 +222,7 @@
   font-size: 14px;
   font-weight: 400;
   text-align: left;
-  color: #777; 
+  color: #00FFBC; 
   margin-top: 5px; 
 }
 .bar {
@@ -342,81 +316,83 @@
 .bottom-card {
   background-color: #f5f4ff;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 20px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
 }
-
-.left-side {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.performance {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  position: relative;
-}
-
-.performance-text {
-  font-size: 18px;
-  font-weight: 700;
-  color: #000000;
+.generate,
+.tracking,
+.units{
   margin: 0;
+}
+.tracking,
+.units{
+  margin-top: 10px;
+}
+
+.generate{
+  font-size: 20px;
+  font-weight: 700;
   font-family: "Montserrat", serif;
 }
+.units{
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Montserrat", serif;
 
-.additional-text {
-  font-size: 16px;
-  font-weight: 500;
-  margin: 0;
+}
+.tracking{
+  font-size: 12px;
+  font-family: "Montserrat", serif;
+  color: #898989;
+
 }
 
-.right-side {
-  flex: 1;
+.circle-container {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 22px;
+  padding: 6px;
 }
 
-.dropdown {
+.circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid #13B78C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
 }
 
-.dropdown-icon {
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  margin-left: 10px;
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: transparent;
 }
 
-.dropdown-menu {
-  position: absolute;
-  top: 2px;
-  left: 10px;
-  border-radius: 5px;
-  width: 100%;
-  z-index: 10;
-  display: block;
+.green-dot {
+  background-color: green;
 }
 
-.dropdown-menu ul {
-  padding: 10px;
-  margin: 0;
-  list-style-type: none;
+.blinking {
+  animation: blink 1s infinite;
 }
 
-.dropdown-menu li {
-  padding: 5px;
-  cursor: pointer;
-  font-size: 12px;
-}
-
-.dropdown-menu li:hover {
-  color: #453a94;
-  font-size: 13px;
+@keyframes blink {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 </style>

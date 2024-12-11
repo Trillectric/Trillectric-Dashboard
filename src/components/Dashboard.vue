@@ -6,7 +6,7 @@
       <SolarPsystem />
       
   </div>
-<ActualCondition/>
+<AlertsandMap/>
 </div>
 </template>
 
@@ -15,8 +15,7 @@
   import DashButton from '../components/Dashbutton.vue';
   import ConsumptionUnits from './ConsumptionUnits.vue';
   import SolarPsystem from './SolarPsystem.vue';
-  import ActualCondition from './ActualCondition.vue';
-  
+import AlertsandMap from './AlertsandMap.vue';  
   export default {
     name: 'Dashboard',
     data() {
@@ -40,7 +39,7 @@
       DashButton,
       ConsumptionUnits,
       SolarPsystem,
-      ActualCondition,
+      AlertsandMap,
       
     },
   };

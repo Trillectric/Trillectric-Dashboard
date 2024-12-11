@@ -12,13 +12,11 @@
       </div>
     </div>
     <div>
-        <!-- <WorldMap/> -->
-
     </div>
   </template>
   
   <script>
-// import WorldMap from './WorldMap.vue';
+
   export default {
     name: "ActualCondition",
     data() {

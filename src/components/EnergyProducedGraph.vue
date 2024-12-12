@@ -30,7 +30,7 @@ export default {
           data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
           axisLabel: {
             formatter: (value) => {
-              return `{value|${value}}{image|}`; // Use rich text
+              return `{value|${value}}{image|}`; 
             },
             rich: {
               value: {

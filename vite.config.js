@@ -5,6 +5,6 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   optimizeDeps: {
-    include: ['vue3-leaflet'], 
+    include: ["@vue-leaflet/vue-leaflet"],
   },
 })

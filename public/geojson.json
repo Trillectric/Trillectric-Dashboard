@@ -1,0 +1,63 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Delhi",
+          "state": "Delhi"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [77.0687, 28.6304],
+              [77.1216, 28.6615],
+              [77.1532, 28.6154],
+              [77.1232, 28.5672],
+              [77.0687, 28.6304]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Mumbai",
+          "state": "Maharashtra"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [72.8258, 19.076],
+              [72.8826, 19.113],
+              [72.946, 19.089],
+              [72.861, 19.019],
+              [72.8258, 19.076]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Kolkata",
+          "state": "West Bengal"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [88.3247, 22.5697],
+              [88.3639, 22.5726],
+              [88.3696, 22.5353],
+              [88.3213, 22.5126],
+              [88.3247, 22.5697]
+            ]
+          ]
+        }
+      }
+    ]
+  }
+  

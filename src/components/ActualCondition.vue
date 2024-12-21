@@ -95,7 +95,7 @@
   .error-header {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 5px;
   }
 
   .error-title {

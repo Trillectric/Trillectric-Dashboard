@@ -1,12 +1,12 @@
 <template>
   <div class="dash_condition">
   <div :class="['dashboard', { 'dashboard-expanded': sidebarOpen }]">
-      <DashButton />
+    <DashButton title="Overview" />
       <ConsumptionUnits />
       <SolarPsystem />
       
   </div>
-<AlertsandMap/>
+ <AlertsandMap/>
 </div>
 </template>
 
@@ -39,7 +39,7 @@ import AlertsandMap from './AlertsandMap.vue';
       DashButton,
       ConsumptionUnits,
       SolarPsystem,
-      AlertsandMap,
+       AlertsandMap,
       
     },
   };
@@ -53,7 +53,7 @@ import AlertsandMap from './AlertsandMap.vue';
   .dashboard {
     transition: margin-left 0.3s ease;
     margin-left: 100px; 
-    width:65%;
+    width:85%;
   }
   
   .dashboard-expanded {

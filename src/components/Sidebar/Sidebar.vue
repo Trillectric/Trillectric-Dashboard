@@ -85,7 +85,7 @@ export default {
   height: 0.5px;
     width: 75%;
     background-color: #fff;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 .sidebar.sidebar-open {
   width: 220px; 
@@ -93,7 +93,7 @@ export default {
 .header {
   display: flex;
   align-items: center;
-  padding: 20px 10px 10px 26px;
+  padding: 19px 15px 10px 26px;
   gap: 15px;
   padding-bottom: 0;
 }

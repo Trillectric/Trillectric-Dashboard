@@ -4,6 +4,7 @@
 
 <script>
 import * as echarts from 'echarts';
+import strikes from "../assets/strikes.svg";
 
 export default {
   name: 'EnergyProducedGraph',
@@ -25,31 +26,43 @@ export default {
           containLabel: true,
         },
         xAxis: {
-          type: 'category',
-          boundaryGap: false,
-          data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-          axisLabel: {
-            formatter: (value) => {
-              return `{value|${value}}{image|}`; 
-            },
-            rich: {
-              value: {
-                fontSize: 12,
-                color: '#333',
-              },
-              image: {
-                width: 14,
-                height: 14,
-                backgroundImage: 'url(../assets/strikes.svg)',
-                align: 'center',
-                padding: [0, 0, 0, 5],
-              },
-            },
-          },
-        },
-        yAxis: {
-          type: 'value',
-        },
+  type: 'category',
+  boundaryGap: false,
+  data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  axisLabel: {
+    formatter: (value) => `{value|${value}}{image|}`,
+    rich: {
+      value: {
+        fontSize: 12,
+        color: '#333',
+      },
+      image: {
+        width: 14,
+        height: 14,
+        backgroundColor: '#fff',  
+        align: 'center',
+        padding: [0, 0, 0, 5],
+        imageUrl: strikes, 
+      },
+    },
+  },
+},
+yAxis: {
+  type: 'value',
+  axisLabel: {
+    formatter: (value) => `{image|}${value}`, // This should display the image before the value
+    rich: {
+      image: {
+        width: 14,
+        height: 14,
+        imageUrl: strikes,  // Ensure this is correct
+        align: 'center',
+        padding: [0, 0, 0, 5],
+      },
+    },
+  },
+},
+
         series: [
           {
             name: 'Energy Consumption',
@@ -66,15 +79,12 @@ export default {
             },
             markPoint: {
               symbol: 'circle',
-              symbolSize: 15,
-              itemStyle: {},
+              symbolSize: 6,
+              itemStyle: {
+                color: '#8D7EFD',
+              },
               data: [30, 150, 60, 100, 70, 250, 120, 110, 50, 80, 105, 75].map((value, index) => ({
                 coord: [index, value],
-                symbol: 'circle',
-                symbolSize: 6,
-                itemStyle: {
-                  color: '#8D7EFD',
-                },
               })),
             },
           },
@@ -93,25 +103,20 @@ export default {
             },
             markPoint: {
               symbol: 'circle',
-              symbolSize: 15,
+              symbolSize: 6,
               itemStyle: {
                 color: '#00F2B2',
               },
               data: [130, 140, 110, 150, 100, 30, 220, 50, 60, 90, 115, 85].map((value, index) => ({
                 coord: [index, value],
-                symbol: 'circle',
-                symbolSize: 6,
-                itemStyle: {
-                  color: '#00F2B2',
-                },
               })),
             },
           },
         ],
-        animation: true, 
-        animationDuration: 1000, 
-        animationEasing: 'cubicOut', 
-        animationDelay: (index) => index * 100, 
+        animation: true,
+        animationDuration: 1000,
+        animationEasing: 'cubicOut',
+        animationDelay: (index) => index * 100,
       };
 
       chart.setOption(option);
